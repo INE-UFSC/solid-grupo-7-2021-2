@@ -25,7 +25,9 @@ class Snake(Animal):
         super().__init__('snake')
 
     def leg_count(self):
-        print('I have no legs, dummy')
+        #print('I have no legs, dummy')
+        #Quando o método é chamado na função, ele espera um int e não uma string
+        return 0
 
 
 def animal_leg_count(animals: list):

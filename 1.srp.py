@@ -8,11 +8,14 @@ Uma classe deve ter somente um motivo para mudar
 
 class Animal:
     def __init__(self, name: str):
-        self.name = name
+        self.__name = name
     
-    def get_name(self) -> str:
-        pass
+    def get_name(self):
+        return self.__name
 
-    # salva no DB
+class SalvaAnimal:
+    data_base = []
+    
     def save(self, animal: Animal):
-        pass
+        self.__animal = animal
+        SalvaAnimal.data_base.append(self.__animal)

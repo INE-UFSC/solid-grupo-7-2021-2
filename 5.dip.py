@@ -6,37 +6,28 @@ Dependências devem ser feitas sobre abstrações, não sobre implementações c
 """
 from abc import ABC
 
-class Stats(ABC):
+class Creature(ABC):
     def __init__(self, name, hp):
         self.__name = name
         self.__hp = hp
 
     @property
     def hp(self):
-            return self.__hp
+        return self.__hp
         
     @property
     def name(self):
         return self.__name
     
-class Player(Stats):
-    def __init__(self, stats:Stats):
-        self.__name = stats.name
-        self.__hp = stats.hp
-        self.__speed = 1
-        
-    @property
-    def hp(self):
-        return self.__hp
+class Player(Creature):
+    def __init__(self, name, hp):
+        super().__init__(name, hp)
 
-    @property
-    def name(self):
-        return self.__name
+class StatsReporter:
+    def __init__(self):
+        pass
 
-class StatsReporter(Stats):
-    def __init__(self, stats: Stats):
-        self.stats = stats
-
-    def report(self):
-        print(f'Name:{self.stats.name()}')
-        print(f'HP:{self.stats.hp()}')
+    def report(self, creature:Creature):
+        if isinstance(creature, Creature):
+            print(f'Name: {creature.name}')
+            print(f'HP: {creature.hp}')

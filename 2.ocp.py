@@ -46,6 +46,18 @@ class Discount:
     def give_discount(self):
             if self.customer == 'fav':
                 return self.price * 0.2
+            #if self.customer == 'vip':
+                #return self.price * 0.4
+            #Isso é uma modificação. O correto é estender a classe
+
+#Aqui a classe é estendida
+class DiscountExt(Discount):
+    def __init__(self, customer, price):
+        super().__init__(customer, price)
+    
+    def give_discount(self):
+            if self.customer == 'fav':
+                return self.price * 0.2
             if self.customer == 'vip':
                 return self.price * 0.4
 
